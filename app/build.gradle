@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.dragan.android.testing"
+        minSdkVersion 18
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled = true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:design:23.0.1'
+    compile 'com.android.support:support-v4:23.0.1'
+
+    // Dependencies for local unit tests
+    testCompile 'junit:junit:4.12'
+    testCompile 'com.google.code.gson:gson:2.4'
+
+    // Android Testing Support Library's runner and rules
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test:rules:0.4.1'
+
+    // Espresso UI Testing
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+
+    // Dependencies for UiAutomator
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
+
+    //Dependencies for Appium
+    testCompile 'io.appium:java-client:2.1.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.45.0'
+
+    //Dependencies for saucelabs
+    testCompile 'com.saucelabs:sauce-rest-api:1.1'
+    testCompile 'com.saucelabs:sauce_junit:2.1.20'
+}
