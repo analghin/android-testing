@@ -23,6 +23,10 @@ import android.widget.TextView;
  */
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 
+    public static final String EMAIL = "foo@example.com";
+
+    public static final String PASSWORD = "hello";
+
     private Context mContext;
 
     private LoginActivity mLoginActivity;
@@ -89,7 +93,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
             }
         });
         getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("email@endava.com");
+        getInstrumentation().sendStringSync(EMAIL);
         getInstrumentation().waitForIdleSync();
 
         // Send string input value
@@ -100,7 +104,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
             }
         });
         getInstrumentation().waitForIdleSync();
-        getInstrumentation().sendStringSync("email");
+        getInstrumentation().sendStringSync(PASSWORD);
         getInstrumentation().waitForIdleSync();
 
         //Perform a click on mLoginButton

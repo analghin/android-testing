@@ -32,6 +32,10 @@ import static org.junit.Assert.assertThat;
 @SdkSuppress(minSdkVersion = 18)
 public class UiAutomatorTest {
 
+    public static final String EMAIL = "foo@example.com";
+
+    public static final String PASSWORD = "hello";
+
     /**
      * The target app package.
      */
@@ -75,9 +79,9 @@ public class UiAutomatorTest {
     @Test
     public void doSuccessLoginAndCheckTheWelcomeText() {
         UiObject2 emaiObject = mDevice.findObject(By.desc("An edit text for email"));
-        emaiObject.setText("email@endava.com");
+        emaiObject.setText(EMAIL);
         UiObject2 passwordObject = mDevice.findObject(By.desc("An edit text for password"));
-        passwordObject.setText("email");
+        passwordObject.setText(PASSWORD);
 
         mDevice.findObject(By.text("Sign in or register")).click();
 
@@ -88,9 +92,9 @@ public class UiAutomatorTest {
     @Test
     public void findViewPerformActionAndCheckAssertion() throws UiObjectNotFoundException {
         UiObject2 emaiObject = mDevice.findObject(By.desc("An edit text for email"));
-        emaiObject.setText("email@endava.com");
+        emaiObject.setText(EMAIL);
         UiObject2 passwordObject = mDevice.findObject(By.desc("An edit text for password"));
-        passwordObject.setText("email");
+        passwordObject.setText(PASSWORD);
 
         mDevice.findObject(By.text("Sign in or register")).click();
 
@@ -114,7 +118,7 @@ public class UiAutomatorTest {
         listView.setMaxSearchSwipes(100).scrollTextIntoView("Item 25");
         listView.getChildByText(new UiSelector().className(TextView.class.getName()), "Item 25").click();
 
-        final UiObject textContent =new UiObject(new UiSelector().className(TextView.class).textContains("Details about Item: 25"));
+        final UiObject textContent = new UiObject(new UiSelector().className(TextView.class).textContains("Details about Item: 25"));
         assertThat(textContent.getText(), containsString("Details about Item: 25"));
         final UiObject2 scrollableItem = mDevice.wait(Until.findObject(By.scrollable(true)), WAIT_TIMEOUT);
         scrollableItem.swipe(Direction.UP, 1f, SPEED_2K_PIXELS_PER_SECOND);
