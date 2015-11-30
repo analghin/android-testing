@@ -1,14 +1,14 @@
 package com.dragan.android.testing.ui.espresso;
 
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-
 import com.dragan.android.testing.LoginActivity;
 import com.dragan.android.testing.R;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -25,14 +25,18 @@ import static org.hamcrest.Matchers.not;
 @RunWith(AndroidJUnit4.class)
 public class EspressoTest {
 
+    public static final String EMAIL = "foo@example.com";
+
+    public static final String PASSWORD = "hello";
+
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
     public void testNavigationDrawerList() {
         //successful login
-        onView(withId(R.id.email)).perform(typeText("email@endava.com"));
-        onView(withId(R.id.password)).perform(click()).perform(typeText("email"));
+        onView(withId(R.id.email)).perform(typeText(EMAIL));
+        onView(withId(R.id.password)).perform(click()).perform(typeText(PASSWORD));
         onView(withId(R.id.email_sign_in_button)).perform(click());
 
         //open drawer
